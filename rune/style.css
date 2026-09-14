@@ -1,6 +1,6 @@
 @font-face{
   font-family: 'rune';
-  src: url('RUNE.TTF') format('truetype');
+  src: url('RUNE.TTF');
   font-weight: normal;
   font-style: normal;
 }
