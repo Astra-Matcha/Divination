@@ -1,0 +1,10 @@
+@font-face{
+  font-family: 'rune';
+  src: url('RUNE.TTF') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.rune-text {
+  font-family: 'rune', sans-serif;
+}
