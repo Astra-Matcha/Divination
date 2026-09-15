@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+/* 커스텀 룬 폰트 설정 */
 @font-face {
   font-family: 'rune';
   src: url('./RUNE.TTF');
@@ -9,4 +10,130 @@
 
 .rune {
   font-family: 'rune', sans-serif;
+}
+
+/* 전체 레이아웃 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #0f0c20;
+  background-image: radial-gradient(circle at 50% 30%, #201a40 0%, #080612 100%);
+  color: #e2d9f3;
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 90%;
+  max-width: 450px;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+/* 헤더 */
+.header .title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #FFD700; /* UR 메인 색상 적용 */
+  text-shadow: 0 0 12px rgba(255, 215, 0, 0.4);
+  margin-bottom: 8px;
+}
+
+.header .subtitle {
+  font-size: 0.9rem;
+  color: #a49bb9;
+  margin-bottom: 30px;
+}
+
+/* 룬 카드 */
+.rune-card {
+  width: 150px;
+  height: 200px;
+  margin: 0 auto 30px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 2px solid #5a4b82;
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 20px rgba(90, 75, 130, 0.3), inset 0 0 15px rgba(90, 75, 130, 0.2);
+  transition: transform 0.4s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 룬 문자 출력 스타일 (RUNE.TTF 폰트 연동) */
+.rune-display {
+  font-size: 5rem;
+  color: #FFD700; /* UR 황금빛 메인 색상 */
+  text-shadow: 0 0 18px rgba(255, 215, 0, 0.6);
+  user-select: none;
+  line-height: 1;
+  transition: transform 0.4s ease;
+}
+
+/* 역방향 문자는 화면에서 카드를 180도 뒤집어서 연출 */
+.rune-card.reversed .rune-display {
+  transform: rotate(180deg);
+}
+
+/* 결과창 */
+.result-box {
+  min-height: 110px;
+  background: rgba(18, 14, 34, 0.6);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.rune-name {
+  font-size: 1.25rem;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.rune-name.reversed-text {
+  color: #FF00FF; /* 역방향/특별 메시지 강조 색상 */
+}
+
+.rune-meaning {
+  font-size: 0.95rem;
+  color: #c4b8e0;
+  line-height: 1.5;
+}
+
+/* 버튼 */
+.draw-btn {
+  width: 100%;
+  padding: 16px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #0f0c20;
+  background: linear-gradient(135deg, #FFD700 0%, #d4af37 100%);
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.draw-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5);
+}
+
+.draw-btn:active {
+  transform: translateY(0);
+}
+
+.footer {
+  font-size: 0.75rem;
+  color: #63587d;
+  margin-top: 20px;
 }
