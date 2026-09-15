@@ -1,11 +1,44 @@
 <!DOCTYPE html>
-<html lang = ko>
-  <head>
-    <meta charset="UTF-8">
-    <title>Elder Futhark Rune Reading</title>
-    <link rel="stylesheet" href="style.css?v=1">
-  </head>
-  <body>
-    <span class="rune">fux</span>
-  </body>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>신비한 룬점 - 고대의 문자가 전하는 메시지</title>
+  <!-- CSS 스타일시트 연결 -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <!-- 헤더 영역 -->
+    <header class="header">
+      <h1 class="title">✨ 신비한 룬점 ✨</h1>
+      <p class="subtitle">마음을 정돈하고 고대의 문자를 뽑아 오늘의 운세를 확인하세요.</p>
+    </header>
+
+    <!-- 룬 문자 출력 및 카드 영역 -->
+    <main class="main-content">
+      <div class="rune-card" id="runeCard">
+        <div class="rune-display" id="runeDisplay">?</div>
+      </div>
+
+      <!-- 운세 결과 표시 영역 -->
+      <div class="result-box" id="resultBox">
+        <h2 class="rune-name" id="runeName">운명을 점쳐보세요</h2>
+        <p class="rune-meaning" id="runeMeaning">아래 버튼을 누르면 고대의 룬 문자가 당신에게 메시지를 전합니다.</p>
+      </div>
+
+      <!-- 룬점 뽑기 버튼 -->
+      <button class="draw-btn" id="drawBtn">룬 문자 뽑기</button>
+    </main>
+
+    <!-- 푸터 영역 -->
+    <footer class="footer">
+      <p>© Ancient Rune Magic. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <!-- 자바스크립트 연결 -->
+  <script src="script.js"></script>
+</body>
 </html>
