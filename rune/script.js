@@ -54,26 +54,47 @@ document.addEventListener("DOMContentLoaded", () => {
   const runeName = document.getElementById("runeName");
   const runeMeaning = document.getElementById("runeMeaning");
 
-  // 버튼을 클릭했을 때만 결과가 계산되고 화면에 출력됩니다.
   drawBtn.addEventListener("click", () => {
-    const result = getRandomRuneInfo();
-    const rune = runeData[result.baseChar];
+    // 중복 클릭 방지 (버튼 비활성화)
+    drawBtn.disabled = true;
+    drawBtn.textContent = "운명을 뽑는 중...";
 
-    // 룬 폰트 클래스 적용 및 룬 문자 텍스트 교체
-    runeDisplay.classList.add("rune");
-    runeDisplay.textContent = result.char;
+    // 초기화 및 로딩 효과 적용
+    runeCard.classList.remove("reversed");
+    runeDisplay.classList.remove("rune");
+    runeDisplay.textContent = "✨";
+    runeName.textContent = "운명을 점치는 중...";
+    runeName.classList.remove("reversed-text");
+    runeMeaning.textContent = "고대의 룬 문자가 나타납니다.";
 
-    // 정방향 / 역방향 처리 및 결과 텍스트 출력
-    if (result.isReversed) {
-      runeCard.classList.add("reversed");
-      runeName.textContent = `${rune.name} - 역방향`;
-      runeName.classList.add("reversed-text");
-      runeMeaning.textContent = rune.reversed;
-    } else {
-      runeCard.classList.remove("reversed");
-      runeName.textContent = `${rune.name} - 정방향`;
-      runeName.classList.remove("reversed-text");
-      runeMeaning.textContent = rune.upright;
-    }
+    // 카드 반짝임/회전 애니메이션 추가
+    runeCard.classList.add("shuffling");
+
+    // 0.8초 후 결과를 화면에 공개
+    setTimeout(() => {
+      const result = getRandomRuneInfo();
+      const rune = runeData[result.baseChar];
+
+      // 애니메이션 클래스 제거
+      runeCard.classList.remove("shuffling");
+
+      // 룬 폰트 연동 및 결과 출력
+      runeDisplay.classList.add("rune");
+      runeDisplay.textContent = result.char;
+
+      if (result.isReversed) {
+        runeCard.classList.add("reversed");
+        runeName.textContent = `${rune.name} - 역방향`;
+        runeName.classList.add("reversed-text");
+        runeMeaning.textContent = rune.reversed;
+      } else {
+        runeName.textContent = `${rune.name} - 정방향`;
+        runeMeaning.textContent = rune.upright;
+      }
+
+      // 버튼 원복
+      drawBtn.disabled = false;
+      drawBtn.textContent = "다시 뽑기";
+    }, 800);
   });
 });
