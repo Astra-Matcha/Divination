@@ -1,4 +1,3 @@
-// 1. 엘더 후사르크 룬 문자 데이터 (fuxarkgwhnijypzstbemlqdo 순서)
 const runeData = {
   f: { name: "페후 (Fehu)", upright: "풍요, 재물, 새로운 시작", reversed: "손실, 탐욕, 낭비" },
   u: { name: "우루즈 (Uruz)", upright: "강인함, 건강, 원초적 에너지", reversed: "약함, 질병, 기회의 상실" },
@@ -26,18 +25,14 @@ const runeData = {
   o: { name: "오달라 (Othala)", upright: "유산, 집, 전통", reversed: "손실, 소외, 고집" }
 };
 
-// 2. 랜덤 룬 뽑기 함수 (지정된 문자 및 대소문자 예외 적용)
 function getRandomRuneInfo() {
   const chars = "fuxarkgwhnijypzstbemlqdo";
   const randomChar = chars[Math.floor(Math.random() * chars.length)];
-  
-  // 대문자가 안 나오는 예외 문자 목록
   const lowercaseOnly = ["x", "g", "h", "n", "i", "j", "y", "s", "q", "d"];
 
   let isReversed = false;
   let finalChar = randomChar;
 
-  // 예외 문자가 아닌 경우에만 50% 확률로 대문자(역방향) 설정
   if (!lowercaseOnly.includes(randomChar)) {
     if (Math.random() < 0.5) {
       finalChar = randomChar.toUpperCase();
@@ -46,13 +41,12 @@ function getRandomRuneInfo() {
   }
 
   return {
-    char: finalChar,        // RUNE.TTF 폰트로 출력할 문법 문자 (소문자 또는 대문자)
-    baseChar: randomChar,   // runeData 조회를 위한 기본 소문자 키
-    isReversed: isReversed  // 역방향 여부
+    char: finalChar,
+    baseChar: randomChar,
+    isReversed: isReversed
   };
 }
 
-// 3. 이벤트 연동
 document.addEventListener("DOMContentLoaded", () => {
   const drawBtn = document.getElementById("drawBtn");
   const runeCard = document.getElementById("runeCard");
@@ -60,14 +54,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const runeName = document.getElementById("runeName");
   const runeMeaning = document.getElementById("runeMeaning");
 
+  // 버튼을 클릭했을 때만 결과가 계산되고 화면에 출력됩니다.
   drawBtn.addEventListener("click", () => {
     const result = getRandomRuneInfo();
     const rune = runeData[result.baseChar];
 
-    // RUNE.TTF 폰트에 넘길 소문자/대문자 알파벳 설정
+    // 룬 폰트 클래스 적용 및 룬 문자 텍스트 교체
+    runeDisplay.classList.add("rune");
     runeDisplay.textContent = result.char;
 
-    // 역방향인 경우 visual 회전 효과 적용
+    // 정방향 / 역방향 처리 및 결과 텍스트 출력
     if (result.isReversed) {
       runeCard.classList.add("reversed");
       runeName.textContent = `${rune.name} - 역방향`;
